@@ -1,5 +1,13 @@
 {
+  "scripts": {
+    "start": "./bin/webpack-dev-server"
+  },
   "name": "simple_blog",
   "private": true,
-  "dependencies": {}
+  "dependencies": {
+    "@rails/webpacker": "^3.3.1"
+  },
+  "devDependencies": {
+    "webpack-dev-server": "2.11.2"
+  }
 }
