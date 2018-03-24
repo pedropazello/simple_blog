@@ -10,8 +10,8 @@ const Hello: React.SFC<HelloProps> = (props) => {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-  ReactDOM.render(
-    <Hello name="React with Typescript" />,
-    document.body.appendChild(document.createElement('div')),
-  )
-})
+  const node = document.getElementById('hello-react');
+  const name = node.getAttribute('data-name');
+
+  ReactDOM.render(<Hello name={name} />, node);
+});
