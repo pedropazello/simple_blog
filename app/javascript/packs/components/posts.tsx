@@ -1,6 +1,5 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
-import * as $ from 'jquery';
 import { Post } from '../types/index';
 
 const headers = new Headers({
