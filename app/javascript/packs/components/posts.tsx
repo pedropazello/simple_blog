@@ -14,15 +14,16 @@ interface PostsListState {}
 
 class PostList extends React.Component<PostsListProps, PostsListState> {
   render() {
-    return (
-      <ul>
-       {
-          this.props.posts.map(post => {
-            return (<li key={post.id}><b>Title:</b> {post.title}, <b>Body:</b> {post.body}</li>)
-          })
-        }
-      </ul>
-    )
+    return this.props.posts.map(post => {
+      return (
+        <div className="card top20">
+          <div className="card-body">
+            <h5 className="card-title"><b>{post.title}</b></h5>
+            <p className="card-text">{post.body}</p>
+          </div>
+        </div>
+      );
+    });
   }
 }
 
@@ -78,12 +79,24 @@ class PostForm extends React.Component<PostFormProps, PostFormState> {
 
   render() {
     return (
-      <div>
-        <label>Title:</label>
-        <input type="text" value={this.state.title} onChange={this.setTitle}/><br/>
-        <label>Body:</label>
-        <textarea value={this.state.body} onChange={this.setBody}/><br/>
-        <button onClick={this.submitForm}>Create</button>
+      <div className="row">
+        <div className="col-md-12">
+          <div className="form-group">
+            <label>Title:</label>
+            <input type="text" value={this.state.title} onChange={this.setTitle} className="form-control"/>
+          </div>
+        </div>
+        <div className="col-md-12">
+          <div className="form-group">
+            <label>Body:</label>
+            <textarea value={this.state.body} onChange={this.setBody} className="form-control"/>
+          </div>
+        </div>
+        <div className="col-md-12">
+          <div className="btn-group pull-right">
+            <button onClick={this.submitForm} className="btn btn-primary">Create</button>
+          </div>
+        </div>
       </div>
     );
   }
@@ -118,9 +131,23 @@ class Posts extends React.Component<Props, State> {
 
   render() {
     return (
-      <div>
-        <PostList posts={this.state.posts} />
-        <PostForm afterSubmit={this.updatePostList} />
+      <div className="container">
+        <div className="row">
+          <div className="col-md-12">
+            <PostForm afterSubmit={this.updatePostList} />
+          </div>
+        </div>
+        <div className="row top20">
+          <div className="col-md-12">
+            <h2>Posts</h2>
+            <hr/>
+          </div>
+        </div>
+        <div className="row">
+          <div className="col-md-12">
+            <PostList posts={this.state.posts} />
+          </div>
+        </div>
       </div>
     );
   }
